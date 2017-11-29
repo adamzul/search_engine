@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet"
+            href="{{ asset('/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/isotope.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/js/fancybox/jquery.fancybox.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/da-slider.css') }}" />
+    <!-- Owl Carousel Assets -->
+    <link href="{{ asset('/js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/styles.css') }}" />
+    <!-- Font Awesome -->
+    <link href="{{ asset('/font/css/font-awesome.min.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

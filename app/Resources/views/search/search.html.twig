@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<div id="imaginary_container"> 
+				<!-- <form class="input-group stylish-input-group">
+					<input type="text" class="form-control"  placeholder="Search" >
+					<span class="input-group-addon">
+						<button type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>  
+					</span>
+				</form> -->
+				{{ form_start(form, {'attr': {'class': 'input-group stylish-input-group'}}) }}
+					{{ form_widget(form.cari, {'attr': {'class': 'form-control'}}) }}
+					<span class="input-group-addon">
+						{{ form_widget(form.save, {'attr': {'class': 'glyphicon glyphicon-search'}}) }}
+							
+					</span>
+					{{ form_end(form) }}
+			</div>
+		</div>
+		<div class="col-sm-3"><a href="mining" class="btn btn-default">mining</a></div>
+	</div>
+</div>
+
+{% for item in result %}
+		
+<div class="container">
+  <div class="panel panel-default">
+	<div class="panel-heading"> {{ item.judul }} </div>
+	<div class="panel-body">{{ item.file }}</div>
+  </div>
+</div>            
+{% endfor %}
+			
+
+{% endblock %}
+
+{% block stylesheets %}
+<!-- <style type="text/css" src="../src/AppBundle/assets/bootstrap-3.3.7-dist/css/bootstrap.css"></style> -->
+<link href="/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<style>
+
+	.stylish-input-group .input-group-addon{
+	background: white !important; 
+	}
+	.stylish-input-group .form-control{
+		border-right:0; 
+		box-shadow:0 0 0; 
+		border-color:#ccc;
+	}
+	.stylish-input-group button{
+		border:0;
+		background:transparent;
+	}
+
+
+
+
+
+
+	div.card {
+	  /*width: 250px;*/
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  text-align: center;
+	}
+
+	div.header {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px;
+		font-size: 40px;
+	}
+
+	div.container {
+		padding: 10px;
+	}
+
+	#custom-search-input {
+		margin:0;
+		margin-top: 10px;
+		padding: 0;
+	}
+ 
+	#custom-search-input .search-query {
+		padding-right: 3px;
+		padding-right: 4px \9;
+		padding-left: 3px;
+		padding-left: 4px \9;
+		/* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+		margin-bottom: 0;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+	}
+ 
+	/*#custom-search-input button {
+		border: 0;
+		background: none;*/
+		/** belows styles are working good */
+		/*padding: 2px 5px;
+		margin-top: 2px;
+		position: relative;
+		left: -28px;*/
+		/* IE7-8 doesn't have border-radius, so don't indent the padding */
+		/*margin-bottom: 0;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		color:#D9230F;
+	}*/
+ 
+	.search-query:focus + button {
+		z-index: 3;   
+	}
+
+</style>
+{% endblock %}
