@@ -42,43 +42,43 @@ class MiningController extends Controller
 		$repositoryArtikel = $this->getDoctrine()->getRepository(Artikel::class);
 		$repositoryKata = $this->getDoctrine()->getRepository(Kata::class);
 		$this->delete();
-		// foreach ($files as $valueFiles) {
-		// 	# code...
-		// 	$artikel = new Artikel();
-		// 	$artikel->setJudul($valueFiles);
-		// 	$em->persist($artikel);
-		// 	$em->flush();
+		foreach ($files as $valueFiles) {
+			# code...
+			$artikel = new Artikel();
+			$artikel->setJudul($valueFiles);
+			$em->persist($artikel);
+			$em->flush();
 
-		// 	$file = strtolower(file_get_contents($path.''.$valueFiles));
-		// 	$file = str_replace(str_split('\\/:*?"<>|,.\''), '', $file);
+			$file = strtolower(file_get_contents($path.''.$valueFiles));
+			$file = str_replace(str_split('\\/:*?"<>|,.\''), '', $file);
 
-		// 	$file = preg_split('/[\s]+|-/', $file );
+			$file = preg_split('/[\s]+|-/', $file );
 
-		// 	foreach ($file as $key => $valueFile) {
-		// 		# code...
-		// 		if(in_array($valueFile, $listStopWords))
-		// 		{
-		// 			continue;
-		// 		}
+			foreach ($file as $key => $valueFile) {
+				# code...
+				if(in_array($valueFile, $listStopWords))
+				{
+					continue;
+				}
 				
-		// 		$valueFile = $stemmer->stem($valueFile);
-		// 		// var_dump($valueFile);
-		// 		$kata = $repositoryKata->findOneBy(array('idArtikel' => $artikel->getId(),'kata' => $valueFile));
-		// 		if($kata != null)
-		// 		{
-		// 			$kata->tambahJumlah();
-		// 			continue;
-		// 		}
-		// 		$kata = new Kata();
-		// 		$kata->setIdArtikel($artikel->getId());
-		// 		$kata->setKata($valueFile);
-		// 		$kata->setJumlah(1);
-		// 		$em->persist($kata);
-		// 		$em->flush();
+				$valueFile = $stemmer->stem($valueFile);
+				// var_dump($valueFile);
+				$kata = $repositoryKata->findOneBy(array('idArtikel' => $artikel->getId(),'kata' => $valueFile));
+				if($kata != null)
+				{
+					$kata->tambahJumlah();
+					continue;
+				}
+				$kata = new Kata();
+				$kata->setIdArtikel($artikel->getId());
+				$kata->setKata($valueFile);
+				$kata->setJumlah(1);
+				$em->persist($kata);
+				$em->flush();
 				
-		// 	}
-		// 	$totalKata = $repositoryKata->findAll();
-		// }
+			}
+			$totalKata = $repositoryKata->findAll();
+		}
 		 return $this->indexMining('done');
 		// return $this->render('default/index.html.twig', [
 		// 	'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
